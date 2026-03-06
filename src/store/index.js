@@ -15,16 +15,17 @@ export const articleStore = defineStore('store', {
         },
 
         addArticle(article) {
-            console.log(article)
             let last_id = this.articles.length
-            console.log("last_id: ", last_id)
             let newArticle = {
                 id: last_id + 1,
                 ...article
             }
-            console.log("added article id:", newArticle.id)
             this.articles.push(newArticle)
-            console.log(article.title)
+        },
+
+        togglePublishStatus(id) {
+            const article = this.articles.find((a) => a.id == id)
+            article.isPublished = !article.isPublished
         }
     }
 })

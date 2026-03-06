@@ -9,11 +9,15 @@
         {{ capitalizedAuthor }}
         </p>
         <p>{{ body }}</p>
+        <button @click="store.togglePublishStatus(props.id)">{{toggleText}}</button>
     </div>
 
 </template>
 
 <script setup>
+import { computed } from 'vue';
+import { articleStore } from '../store';
+
 const props = defineProps({
     id: {
         type: Number,
@@ -36,4 +40,11 @@ const props = defineProps({
         required: true,
     }
 })
+
+const store = articleStore()
+
+const toggleText = computed(() => {
+    return props.isPublished ? "Unpublish" : "Publish"
+})
+
 </script>

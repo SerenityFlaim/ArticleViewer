@@ -4,7 +4,6 @@
         <div v-if="store.articles.length">
             <Article
               v-for="article in store.articles"
-              :key="article.id"
               :id="article.id"
               :author="article.author"
               :title="article.title"

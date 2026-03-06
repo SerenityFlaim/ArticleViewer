@@ -21,7 +21,7 @@ const routes = [
         component: ArticleView,
         props: (route) => {
             const store = articleStore()
-            const article = store.articles.find((x) => x.id == route.params.id)
+            const article = store.articles.find((a) => a.id == route.params.id)
             return article ? {...article} : {}
         }
     },
