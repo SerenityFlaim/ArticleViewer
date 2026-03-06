@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed, watch } from 'vue';
 import { articleStore } from '../store';
 
 const props = defineProps({
@@ -42,6 +42,14 @@ const props = defineProps({
 })
 
 const store = articleStore()
+
+const articleInStore = computed(() => {
+    return store.articles.find((a) => a.id == props.id)
+})
+
+watch(() => articleInStore.value.isPublished, (newStatus, oldStatus) => {
+    console.log(`Article publish changed from ${oldStatus} to ${newStatus}`)
+})
 
 const toggleText = computed(() => {
     return props.isPublished ? "Unpublish" : "Publish"
