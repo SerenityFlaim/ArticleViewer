@@ -21,8 +21,6 @@
 <script setup>
 import { articleStore } from '../store';
 import Article from './Article.vue'
-//import store from '../store'
-
 
 defineProps({
     msg: {

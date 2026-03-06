@@ -9,7 +9,6 @@
         {{ capitalizedAuthor }}
         </p>
         <p>{{ body }}</p>
-        <p>{{ key }}</p>
         <RouterLink :to="{ name: 'article', params: {id: id}}">
             Read more
         </RouterLink>
@@ -24,10 +23,6 @@ const props = defineProps({
         type: Number,
         required: true,
     },
-    // key: {
-    //     type: Number,
-    //     required: true,
-    // },
     author: {
         type: String,
         required: true,

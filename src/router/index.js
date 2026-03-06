@@ -2,7 +2,6 @@ import { createWebHistory, createRouter } from 'vue-router'
 import { articleStore } from '../store'
 import NewArticle from '../views/NewArticle.vue'
 import ArticleView from '../views/ArticleView.vue'
-//import store from '../store'
 import ArticleList from '../components/ArticleList.vue'
 
 const routes = [
@@ -21,7 +20,8 @@ const routes = [
         name: 'article',
         component: ArticleView,
         props: (route) => {
-            const article = articleStore.articles.find((x) => x.id == route.params.id)
+            const store = articleStore()
+            const article = store.articles.find((x) => x.id == route.params.id)
             return article ? {...article} : {}
         }
     },

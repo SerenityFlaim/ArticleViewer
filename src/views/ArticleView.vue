@@ -9,14 +9,13 @@
         {{ capitalizedAuthor }}
         </p>
         <p>{{ body }}</p>
-        <p>{{ key }}</p>
     </div>
 
 </template>
 
 <script setup>
 const props = defineProps({
-    key: {
+    id: {
         type: Number,
         required: true,
     },
