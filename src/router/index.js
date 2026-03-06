@@ -3,12 +3,14 @@ import { articleStore } from '../store'
 import NewArticle from '../views/NewArticle.vue'
 import ArticleView from '../views/ArticleView.vue'
 import ArticleList from '../components/ArticleList.vue'
+import HomeView from '../views/HomeView.vue'
 
 const routes = [
     { 
         path: '/',
         name: 'Home',
-        component: ArticleList
+        //component: ArticleList
+        component: HomeView
     },
     { 
         path: '/about',

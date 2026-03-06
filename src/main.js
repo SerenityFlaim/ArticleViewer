@@ -17,4 +17,4 @@ app.component('ButtonTemplate', ButtonTemplate)
 app.mount('#app')
 
 const store = articleStore()
-store.fetchArticles()
+//store.fetchArticles()

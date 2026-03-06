@@ -47,7 +47,7 @@ const articleInStore = computed(() => {
     return store.articles.find((a) => a.id == props.id)
 })
 
-watch(() => articleInStore.value.isPublished, (newStatus, oldStatus) => {
+watch(() => articleInStore.value?.isPublished, (newStatus, oldStatus) => {
     console.log(`Article publish changed from ${oldStatus} to ${newStatus}`)
 })
 

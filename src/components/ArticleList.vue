@@ -29,6 +29,7 @@ defineProps({
 })
 
 const store = articleStore()
+const response = await store.fetchArticles()
 
 </script>
 
