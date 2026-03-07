@@ -1,14 +1,14 @@
 <template>
     <div class="article"
-            :style="{ 'border-color': isPublished ? 'white' : 'crimson'}"
+            :style="{ 'border-color': articleInStore?.isPublished ? 'white' : 'crimson'}"
     >
-        <h1>{{ title }}</h1>
+        <h1>{{ articleInStore?.title }}</h1>
         <p
         :style = "authorStyle"
         >
         {{ capitalizedAuthor }}
         </p>
-        <p>{{ body }}</p>
+        <p>{{ articleInStore?.body }}</p>
         <button @click="store.togglePublishStatus(props.id)">{{toggleText}}</button>
     </div>
 
@@ -23,22 +23,6 @@ const props = defineProps({
         type: Number,
         required: true,
     },
-    author: {
-        type: String,
-        required: true,
-    },
-    title: {
-        type: String,
-        required: true,
-    },
-    body: {
-        type: String,
-        required: true,
-    },
-    isPublished: {
-        type: Boolean,
-        required: true,
-    }
 })
 
 const store = articleStore()
@@ -52,7 +36,7 @@ watch(() => articleInStore.value?.isPublished, (newStatus, oldStatus) => {
 })
 
 const toggleText = computed(() => {
-    return props.isPublished ? "Unpublish" : "Publish"
+    return articleInStore.value?.isPublished ? "Unpublish" : "Publish"
 })
 
 </script>

@@ -1,6 +1,5 @@
 <template>
     <div class="hello">
-        <h1>{{ msg }}</h1>
         <div v-if="store.status === 'REQUESTED'"><Loading /></div>
         
         <div v-else-if="store.status == 'FAILED'">
@@ -14,7 +13,6 @@
               :id="article.id"
               :author="article.author"
               :title="article.title"
-              :body="article.body"
               :isPublished="article.isPublished"
             />
         </div>

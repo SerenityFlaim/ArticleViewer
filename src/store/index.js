@@ -11,17 +11,22 @@ export const Types = {
 }
 
 export const articleStore = defineStore('store', () => {
-    const articles = reactive([])
+    const articles = ref([])
     const status = ref(null)
     let controller = null;
 
     async function fetchArticles() {
+        if (articles.value.length > 0) {
+            status.value = Types.request_status.SUCCEEDED;
+            return;
+        }
+
         controller = new AbortController();
         status.value = Types.request_status.REQUESTED
 
         try {
             const json = await articleService.fetchArticles(controller.signal)
-            this.articles.push(...json)
+            articles.value = json
             status.value = Types.request_status.SUCCEEDED
         } 
         catch (error) {
@@ -41,16 +46,16 @@ export const articleStore = defineStore('store', () => {
     }
 
     function addArticle(article) {
-        let last_id = this.articles.length
+        let last_id = articles.value.length
         let newArticle = {
             id: last_id + 1,
             ...article
         }
-        this.articles.push(newArticle)
+        articles.value.push(newArticle)
     }
 
     function togglePublishStatus(id) {
-        const article = this.articles.find((a) => a.id == id)
+        const article = articles.value.find((a) => a.id == id)
         article.isPublished = !article.isPublished
     }
 

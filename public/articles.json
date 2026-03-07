@@ -2,24 +2,38 @@
     "articles": [
     {
         "id": 1,
-        "title": "Title 1",
+        "title": "Zen browsing",
+        "author": "Philipp Matuha",
+        "body": "Zen browser is modern, stylish and fast. I also like the vertical tabs!",
+        "isPublished": true
+    },
+    {
+        "id": 2,
+        "title": "Why Linux is better",
+        "author": "Amal Blyagoz",
+        "body": "Even though I compiled 3 linux kernels it's still better than bloated Windows. I use pop_os btw.",
+        "isPublished": true
+    },
+    {
+        "id": 3,
+        "title": "Priora isn't that bad",
+        "author": "Nikita Smirnov",
+        "body": "After 2 weeks you get used to it and... love it. Queen of roads.",
+        "isPublished": false
+    },
+    {
+        "id": 4,
+        "title": "Learning course",
         "author": "Sergey Sinitsa",
         "body": "Learn Vue",
         "isPublished": true
     },
     {
-        "id": 2,
-        "title": "Title 2",
-        "author": "Sergey Sinitsa",
-        "body": "Learn about single-file components",
+        "id": 5,
+        "title": "YOLO your life",
+        "author": "Asya Cheush",
+        "body": "Grab your coffee and get ready for a F1 drive with ML queen",
         "isPublished": true
-    },
-    {
-        "id": 3,
-        "title": "Title 3",
-        "author": "Sergey Sinitsa",
-        "body": "Fall in love",
-        "isPublished": false
     }
 ]
 }
