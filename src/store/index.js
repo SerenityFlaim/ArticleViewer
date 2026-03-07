@@ -1,55 +1,44 @@
-// import { defineStore } from 'pinia'
-
-// export const articleStore = defineStore('store', {
-//     state: () => {
-//         return {
-//             articles: []
-//         }
-//     },
-
-//     actions: {
-//         fetchArticles() {
-//             fetch('./articles.json')
-//                 .then(response => response.json())
-//                 .then(articles_fetch => this.articles.push(...articles_fetch))
-//         },
-
-//         addArticle(article) {
-//             let last_id = this.articles.length
-//             let newArticle = {
-//                 id: last_id + 1,
-//                 ...article
-//             }
-//             this.articles.push(newArticle)
-//         },
-
-//         togglePublishStatus(id) {
-//             const article = this.articles.find((a) => a.id == id)
-//             article.isPublished = !article.isPublished
-//         }
-//     }
-// })
-
-
 import { defineStore } from "pinia";
-import { reactive } from "vue";
+import { ref, reactive } from "vue";
 import articleService from '../services/Article';
 
+export const Types = {
+    request_status: {
+        REQUESTED: 'REQUESTED',
+        SUCCEEDED: 'SUCCEEDED',
+        FAILED: 'FAILED'
+    }
+}
 
 export const articleStore = defineStore('store', () => {
     const articles = reactive([])
+    const status = ref(null)
+    let controller = null;
 
-    // function fetchArticles() {
-    //     fetch('./articles.json')
-    //         .then(response => response.json())
-    //         .then(articles_fetch => this.articles.push(...articles_fetch))
-    // }
     async function fetchArticles() {
-        const json = await articleService.fetchArticles()
-        console.log(json);
-        this.articles.push(...json)
+        controller = new AbortController();
+        status.value = Types.request_status.REQUESTED
+
+        try {
+            const json = await articleService.fetchArticles(controller.signal)
+            this.articles.push(...json)
+            status.value = Types.request_status.SUCCEEDED
+        } 
+        catch (error) {
+            status.value = Types.request_status.FAILED
+            console.log("Store fetch error:", error)
+        } 
+        finally {
+            controller = null;
+        }
     }
 
+    function cancelFetch() {
+        if (controller) {
+            controller.abort();
+            status.value = null;
+        }
+    }
 
     function addArticle(article) {
         let last_id = this.articles.length
@@ -65,5 +54,5 @@ export const articleStore = defineStore('store', () => {
         article.isPublished = !article.isPublished
     }
 
-    return { articles, fetchArticles, addArticle, togglePublishStatus}
+    return { articles, status, fetchArticles, cancelFetch, addArticle, togglePublishStatus}
 })

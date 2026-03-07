@@ -9,7 +9,6 @@ const routes = [
     { 
         path: '/',
         name: 'Home',
-        //component: ArticleList
         component: HomeView
     },
     { 

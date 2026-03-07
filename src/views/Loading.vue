@@ -1,6 +1,15 @@
 <template>
+    <p>Loading articles...</p>
     <div class="loader"></div>
+    <ButtonTemplate @click="store.cancelFetch">Cancel</ButtonTemplate>
 </template>
+
+<script setup lang="ts">
+import ButtonTemplate from '../components/ButtonTemplate.vue';
+import { articleStore } from '../store';
+const store = articleStore();
+</script>
+
 
 <style scoped>
 .loader {

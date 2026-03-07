@@ -6,7 +6,6 @@
             <div><input type="text" v-model="article.author" placeholder="Author"></div>
             <div><textarea v-model="article.body" placeholder="Body"></textarea></div>
             <div><label><input type="checkbox" v-model="article.isPublished">Published</label></div>
-            <!-- <div><input type="submit" value="Add" v-on:click.prevent="$emit('add-article', article)"></div> -->
             <ButtonTemplate v-on:click.prevent="$emit('add-article', article)">
                 Add article
             </ButtonTemplate>
