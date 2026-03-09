@@ -1,14 +1,14 @@
 <template>
     <div class="hello">
-        <h2>View your articles!</h2>
         <div v-if="store.status === 'REQUESTED'"><Loading /></div>
         
-        <div v-else-if="store.status == 'FAILED'">
+        <div v-else-if="store.status == 'FAILED'" class="error-wrapper">
             <p>Error: couldn't load data from the server.</p>
             <ButtonTemplate @click="store.fetchArticles">Refresh</ButtonTemplate>
         </div>
 
         <div v-else-if="store.articles.length" class="article-wrapper">
+            <h2>View your articles!</h2>
             <Article
               v-for="article in store.articles"
               :id="article.id"
@@ -47,6 +47,19 @@ await store.fetchArticles()
     justify-content: space-around;
     gap: 1rem;
     align-items: center;
+}
+.error-wrapper{
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+p {
+    /* border: 1px solid #000; */
+    font-size: 20px;
+    font-weight: 600;
 }
 
 h1 {
