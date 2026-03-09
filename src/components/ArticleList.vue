@@ -1,5 +1,6 @@
 <template>
     <div class="hello">
+        <h2>View your articles!</h2>
         <div v-if="store.status === 'REQUESTED'"><Loading /></div>
         
         <div v-else-if="store.status == 'FAILED'">
@@ -7,7 +8,7 @@
             <ButtonTemplate @click="store.fetchArticles">Refresh</ButtonTemplate>
         </div>
 
-        <div v-else-if="store.articles.length">
+        <div v-else-if="store.articles.length" class="article-wrapper">
             <Article
               v-for="article in store.articles"
               :id="article.id"
@@ -40,6 +41,14 @@ await store.fetchArticles()
 </script>
 
 <style scoped>
+.article-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 1rem;
+    align-items: center;
+}
+
 h1 {
     margin: 40 px 0 0;
 }

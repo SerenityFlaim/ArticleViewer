@@ -2,16 +2,16 @@
     <div class="article"
             :style="{ 'border-color': isPublished ? 'white' : 'crimson'}"
     >
-        <h1>{{ title }}</h1>
-        <p
-        :style = "authorStyle"
-        >
-        {{ capitalizedAuthor }}
-        </p>
-        <p>{{ body }}</p>
-        <RouterLink :to="{ name: 'article', params: {id: id}}">
-            Read more
-        </RouterLink>
+        <div class="article-info">
+            <h1>{{ title }}</h1>
+            <p
+            :style = "authorStyle"
+            >
+            {{ capitalizedAuthor }}
+            </p>
+        </div>
+        <!-- <p>{{ body }}</p> -->
+        <RouterLink :to="{ name: 'article', params: {id: id}}">Read more</RouterLink>
     </div>
 
 </template>
@@ -55,26 +55,38 @@ const authorStyle = computed(() => {
 </script>
 
 <style scoped>
-a {
-    text-decoration: none;
-    color: inherit;
-    cursor: pointer;
+.article{
+    padding: 0 1rem 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 390px;
+    height: 150px;
+    border: 3px solid;
+    border-color: #f2f0e3;
+    border-radius: 10px;
 }
 
-a:hover {
-    text-decoration: underline;
+.article-info{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /* border: 3px solid lightblue; */
 }
 
 h1 {
-    font-size: large;
+    font-size: 25px;
     font-weight: bold;
+    /* border: 1px solid #000; */
 }
 p {
+    /* border: 1px solid #000; */
     font-size: medium;
 }
-
-.article{
-    border: 3px solid;
-    border-color: white;
+a {
+    font-size: 18px;
 }
+
 </style>
