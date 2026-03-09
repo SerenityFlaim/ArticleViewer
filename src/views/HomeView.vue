@@ -21,7 +21,7 @@ import Loading from './Loading.vue';
 
 .nav-bar{
 
-  border-color: 2px solid red;
+  /* border-color: 2px solid red; */
   border: 2px;
 }
 

@@ -9,7 +9,7 @@
         {{ capitalizedAuthor }}
         </p>
         <p>{{ articleInStore?.body }}</p>
-        <button @click="store.togglePublishStatus(props.id)">{{toggleText}}</button>
+        <ButtonTemplate @click="store.togglePublishStatus(props.id)">{{toggleText}}</ButtonTemplate>
     </div>
 
 </template>
@@ -17,6 +17,7 @@
 <script setup>
 import { computed, watch } from 'vue';
 import { articleStore } from '../store';
+import ButtonTemplate from '../components/ButtonTemplate.vue';
 
 const props = defineProps({
     id: {
@@ -40,3 +41,22 @@ const toggleText = computed(() => {
 })
 
 </script>
+
+<style scoped>
+.article{
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+h1 {
+    font-size: 55px;
+}
+
+p {
+    font-size: 20px;
+    font-weight: 500;
+}
+</style>

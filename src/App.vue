@@ -24,7 +24,7 @@ import ArticleList from './components/ArticleList.vue'
   flex-direction: column;
   justify-content: space-evenly;
   width: 100%;
-  border: 2px solid orange;
+  /* border: 2px solid orange; */
 }
 
 .nav-bar-wrapper{
@@ -42,12 +42,12 @@ import ArticleList from './components/ArticleList.vue'
   width: 25%;
   border: 4px solid #f2f0e3;
   border-radius: 40px;
-  background-color: #293241;
+  /* background-color: #293241; */
 }
 
 
 .articles{
-  border: 2px solid red;
+  /* border: 2px solid red; */
 }
 
 

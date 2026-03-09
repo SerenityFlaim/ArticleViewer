@@ -6,21 +6,21 @@
 
 <style scoped>
 .template-btn {
-  width: 120px;
+  min-width: 120px;
   height: 45px;
   font-weight: 500;
   font-size: 20px;
   padding: 8px 16px;
   background-color: #ee6c4d;
+  text-align: center;
   color: #f2f0e3;
-  border: 4px solid transparent;
+  /* border: 4px solid transparent; */
   transition: all 0.25s ease;
   border-radius: 15px;
   cursor: pointer;
-  /* transition: border-color 0.15s; */
 }
 
 .template-btn:hover {
-border-color: #f2f0e3;
+  border: 4px solid #f2f0e3;
 }
 </style>

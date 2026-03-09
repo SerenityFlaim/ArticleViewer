@@ -1,5 +1,5 @@
 <template>
-    <h1>Add new article form</h1>
+    <h1>Add new article</h1>
     <ArticleForm title="New title" body="" isPublished=""
         v-on:add-article="submit" />
 </template>
@@ -18,3 +18,10 @@ function submit(data){
     router.push('/')
 }
 </script>
+
+
+<style scoped>
+h1 {
+    font-size: 40px;
+}
+</style>
